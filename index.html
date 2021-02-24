@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <title>Fancy weather</title>
+  </head>
+  <body>
+
+    <div class="app-wrapper hide">
+      <div class="buttons-controls">
+        <div class="controls">
+          <button class="update">
+            <img src="./img/Vector.svg" alt="">
+          </button>
+          <button class="degressF">
+            °F
+          </button>
+          <button class="degressC active-degress">
+            °C
+          </button>  
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="search the city" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <div class="loading-indicator hide">
+            <div class="spinner-border spinner-search text-dark" role="status"></div>
+          </div>
+          <button class="btn voice" type="button" id="button-addon2"></button>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+          </div>
+          <button type="button" class="btn button-error hide" data-toggle="modal" data-target="#exampleModal">
+            Запустить модальное окно
+          </button>
+        </div>
+      </div>
+
+      <div class="data">
+        <div class="weather-data">
+          <div class="weather-today">
+            <div class="title">
+              <div class="names">
+                <span class="name name-city text"></span>
+                <span class="name name-country text"></span>
+              </div>
+              <p class="date text"></p>
+              <span class="time"></span>
+            </div>
+            <div class="today">
+              <div class="value-degress">
+                <span class="degress-today"></span>
+                <span class="degress">°</span>
+              </div>
+              <div class="today-info">
+                <img class="img-weather" src="./img/Clear.svg" alt="">
+                <p class="text-today weather-text weather"></p>
+                <div class="static">
+                  <span class="static-text"></span>
+                  <span class="text-today weather-text value"></span>
+                </div>
+                <div class="static">
+                  <span class="static-text"></span>
+                  <span class="text-today weather-text value"></span>
+                </div>
+                <div class="static">
+                  <span class="static-text"></span>
+                  <span class="text-today weather-text value"></span>
+                  <span class="static-text"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="days">
+            <div class="day">
+              <p class="date next-day second-day"></p>
+              <div class="value-weather">
+                <span class="degress-today degress-next-day"></span>
+                <span class="degress-next-day">°</span>
+                <img class="img-weather small-img" src="./img/Clear.svg" alt="">
+              </div>
+            </div>
+            <div class="day">
+              <p class="date next-day third-day"></p>
+              <div class="value-weather">
+                <span class="degress-today degress-next-day"></span>
+                <span class="degress-next-day">°</span>
+                <img class="img-weather small-img" src="./img/Clear.svg" alt="">
+              </div>
+            </div>
+            <div class="day">
+              <p class="date next-day fourth-day"></p>
+              <div class="value-weather">
+                <span class="degress-today degress-next-day"></span>
+                <span class="degress-next-day">°</span>
+                <img class="img-weather small-img" src="./img/Clear.svg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="data-map">
+          <div id="map"></div>
+          <div class="coordinates">
+            <span class="text-map static-text"></span>
+            <span class="text-map value"></span> 
+          </div>
+          <div class="coordinates">
+            <span class="text-map static-text"></span>
+            <span class="text-map value"></span>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="loading">
+      <h1 class="loading-title">Weather</h1>
+      <div class="spinner-border text-light" role="status"></div>
+      <span class="loading-text">Loading...</span>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title static-text" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span class="error"></span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary static-text" data-dismiss="modal"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./dist/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+webpack.config.js
+babel.config.js
+.babelrc.js
+getDataWeather.test.js
+searchCity.test.js
+switchingTemperatureUnits.test.js
+translate.test.js
+updateBackgroundImage.test.js
