@@ -52,9 +52,8 @@ function showElementsValues(coordinates, dataWeather) {
   }
 }
 
-function loadingApp(wordsForImage, dataWeather, coordinates) {
+function loadingApp(dataWeather, coordinates) {
   firstLoading();
-  console.log(wordsForImage);
   app.style.background = `linear-gradient(180deg, rgba(8, 15, 26, 0.59) 0%,
      rgba(17, 17, 46, 0.46) 100%),url(${image.src})`;
     changeImagesWeather(dataWeather.daily);
@@ -111,17 +110,20 @@ async function searchCity(city) {
   return result;
 }
 
+async function updateBackgroundImage(dataCity) {
+  const dataForImage = await getDataForImage(dataCity.results[MIN_NUMBER]);
+  loadImages(dataForImage);
+}
+
 async function search(city) {
   const dataCity = await searchCity(city);
   const coordinates = dataCity.results[MIN_NUMBER].geometry;
   const dataWeather = await getWeatherData(coordinates);
   const weatherDescription = dataWeather.current.weather[MIN_NUMBER].description;
-  const dataForImage = await getDataForImage(dataCity.results[MIN_NUMBER]);
-  const wordsForImage = dataForImage[NUMBER_WORDS_FOR_IMAGE];
   showText(dataCity, city, weatherDescription);
-  loadImages(dataForImage);
-  image.onload = () => loadingApp(wordsForImage, dataWeather, coordinates);
+  loadingApp(dataWeather, coordinates);
   updateTime();
+  await updateBackgroundImage(dataCity);
 }
 
 window.addEventListener('keyup', (event) => {
