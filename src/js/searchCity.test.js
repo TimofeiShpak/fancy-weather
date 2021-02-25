@@ -1,5 +1,5 @@
 import { 
-  getDateByTimeZone, getOtherDays, getData
+  getDateByTimeZone, getOtherDays, getData, getDataCityForTranslate
 } from './searchCity';
 import { enableFetchMocks } from 'jest-fetch-mock'
 enableFetchMocks()

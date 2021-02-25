@@ -1,6 +1,11 @@
 import 'babel-polyfill';
 import { getData, getDateByTimeZone } from './searchCity';
-import { MIN_NUMBER, NUMBER_FOR_ROUND } from './constants';
+import {
+  MIN_NUMBER, input, loadingIndicator, NUMBER_FOR_ROUND,
+} from './constants';
+
+const errorText = document.querySelector('.error');
+const buttonError = document.querySelector('.button-error');
 
 const seasonsNorth = ['winter', 'winter', 'spring', 'spring', 'spring', 'summer',
   'summer', 'summer', 'autumn', 'autumn', 'autumn', 'winter'];
@@ -9,6 +14,7 @@ const seasonsSouth = ['summer', 'summer', 'autumn', 'autumn', 'autumn', 'winter'
 
 const END_STRING_HOURS = 19;
 const START_STRING_HOURS = 17;
+const ONE_WORD = 1;
 
 
 let valueTimeDay = '';
@@ -43,6 +49,17 @@ export function getSeason(valueLatitudes) {
     season = seasonsSouth[new Date().getMonth()];
   }
   return season;
+}
+
+export function showWrongResult(word) {
+  let errorMessage = word;
+  input.value = '';
+  loadingIndicator.classList.add('hide');
+  if (errorMessage.split(' ').length === ONE_WORD) {
+    errorMessage = `no results for ${word}`;
+  }
+  errorText.innerText = errorMessage;
+  buttonError.click();
 }
 
 async function getImage(season, timeDay) {

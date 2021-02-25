@@ -4,7 +4,7 @@ import {
   getDataCity, getData, updateTime, getDataCityForTranslate,
 } from './js/searchCity';
 import { getWeather, getWeatherValues, changeImagesWeather } from './js/getDataWeather';
-import { getDataForImage } from './js/updateBackgroundImage';
+import { getDataForImage, showWrongResult } from './js/updateBackgroundImage';
 import { switchingDegress, checkDegress } from './js/switchingTemperatureUnits';
 import drawMap from './js/terrainMap';
 import {
@@ -86,19 +86,6 @@ function showText(dataCity, city, weatherDescription) {
   changeInnerTextElements(wordsForTranslate);
 }
 
-// async function getTranslateData(dataCity, city, weatherDescription) {
-//   const dataCityForTranslate = getDataCityForTranslate(dataCity, city);
-//   const wordsForTranslate = dataCityForTranslate.concat(weatherDescription);
-//   const translatedWords = await getTranslatedWord(wordsForTranslate);
-//   let result;
-//   if (translatedWords.code > NUMBER_OK_CODE) {
-//     showWrongResult(translatedWords.message);
-//   } else {
-//     result = translatedWords.text;
-//   }
-//   return result;
-// }
-
 async function getWeatherData(coordinates) {
   const dataWeather = await getWeather(coordinates);
   let result;
@@ -113,6 +100,7 @@ async function getWeatherData(coordinates) {
 async function searchCity(city) {
   const dataCity = await getDataCity(city);
   let result;
+  console.log(dataCity.status.code)
   if (dataCity.status.code > NUMBER_OK_CODE) {
     showWrongResult(dataCity.status.message);
   } else if (dataCity.results[MIN_NUMBER]) {
